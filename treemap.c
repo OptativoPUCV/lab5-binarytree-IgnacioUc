@@ -132,8 +132,15 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             }
             free(node->pair->key);
         }
-        
+        else{
+            TreeNode* successor = minimum(node->right);
+            node->pair->key = successor->pair->key;
+            node->pair->value = successor->pair->value;
+            removeNode(tree, successor);
+        }
     }
+    free(node);
+    
     
     
 }
